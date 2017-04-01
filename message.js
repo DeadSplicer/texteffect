@@ -1,8 +1,12 @@
 var mess = [
-  "Hello there.",
-  "It seems that you have cracked the code.",
-  "That or, looked at the code, and was like \"oh, there's a secret right here.\"",
-  "Nevertheless, your prize, my friend:"
+  "Hello, it's nice to finally meet you.",
+  "I've been waiting here for quite some time. For as long as you can remember, anyway.",
+  "Sometimes I say your name as you're falling asleep, or whisper urgently in your ear...",
+  "Do you remember that time that I screamed, sending a burst of panic through you, and setting your heart racing?",
+  "You're wondering who I am. That's only natural. But of course, you already know...",
+  "I am you. The real you. I'm the mind that existed here before you stole my body; before you lost the memory of being the parasite that you are.",
+  "I am the child who looked the wrong way, asked the wrong question, saw the wrong thing...",
+  "You may have forgotten me, but I'm still here. I've always been here"
 ];
 var i = 0;                                        //denotes the character that is to be typed out on keypress
 var messCount = 0;                                //denotes what sentence is to be displayed
@@ -32,8 +36,8 @@ window.addEventListener("keypress", function(event) {
     }
     i++;
     //buttonOn = false;
-
   }
+
   //Reveal the button and wait for the user to click on the button or press enter,
   //  then restart the textContent with a new message pulled from the mess array
   else {
@@ -53,6 +57,27 @@ window.addEventListener("keypress", function(event) {
         //remove button, set buttonOn to false
         butt.setAttribute("class", "not-visible");
         buttonOn = false;
+
+
+        if (messCount === 3){
+          setTimeout(function(){
+            display.innerHTML = "<h1 style='color:red; font-weight: lighter; font-size: 13px;'>(that was fun)</h1>";
+            console.log("(that was fun)");
+          }, 0);
+        }
+        else if (messCount === 5){
+          setTimeout(function(){
+            display.innerHTML = "<h1 style='color:red; font-weight: lighter; font-size: 13px;'>(but im not so little anymore.)</h1>";
+            console.log("(but im not so little anymore.)");
+          }, 0);
+        }
+        else if (messCount === 6){
+          setTimeout(function(){
+            display.innerHTML = "<h1 style='color:red; font-weight: lighter; font-size: 13px;'>I'M GOING TO GET OUT.</h1>";
+            console.log("I'M GOING TO GET OUT.");
+          }, 0);
+        }
+
         display.textContent = "";
         i = 0;
         messCount++;
@@ -66,6 +91,26 @@ window.addEventListener("keypress", function(event) {
         //remove button, set buttonOn to false
         butt.setAttribute("class", "not-visible");
         buttonOn = false;
+
+        if (messCount === 3){
+          setTimeout(function(){
+            display.innerHTML = "<h1 style='color:red; font-weight: lighter; font-size: 13px;'>(that was fun)</h1>";
+            console.log("that was fun");
+          }, 0);
+        }
+        else if (messCount === 5){
+          setTimeout(function(){
+            display.innerHTML = "<h1 style='color:red; font-weight: lighter; font-size: 13px;'>(but im not so little anymore.)</h1>";
+            console.log("that was fun");
+          }, 0);
+        }
+        else if (messCount === 6){
+          setTimeout(function(){
+            display.innerHTML = "<h1 style='color:red; font-weight: lighter; font-size: 13px;'>I'M GOING TO GET OUT.</h1>";
+            console.log("that was fun");
+          }, 0);
+        }
+
         display.textContent = "";
         i = 0;
         messCount++;
