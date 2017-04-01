@@ -20,8 +20,8 @@ var butt = document.querySelector("button");      //selecting the button
 butt.style.background = "rgba(1,1,1,0)";
 butt.setAttribute("class", "not-visible");
 
-//type each character in textContent with each key press
-window.addEventListener("keypress", function() {
+//type each character in textContent with each keypress, then disply and deal with the button at the end of the string
+window.addEventListener("keypress", function(event) {
   if (i < mess[messCount].length){
     display.textContent += mess[messCount][i];
     if (display.textContent.length > 0 && val === false){
@@ -34,6 +34,8 @@ window.addEventListener("keypress", function() {
     //buttonOn = false;
 
   }
+  //Reveal the button and wait for the user to click on the button or press enter,
+  //  then restart the textContent with a new message pulled from the mess array
   else {
     console.log("EOS");
     butt.setAttribute("class", "visible");
@@ -42,7 +44,8 @@ window.addEventListener("keypress", function() {
     butt.style.background = "";
     //butt.setAttribute("onclick", "location.href='#'");
 
-    //When user clicks on the button, set i = 0, remove message and go to the next mess array object, and rehide/disable the button.
+    //When user clicks on the button or presses enter at the end of the string,
+    //  set i = 0, remove message and go to the next mess array object, and rehide/disable the button.
     butt.addEventListener("click", function(){
       if (buttonOn === true) {
         //fade button out
@@ -55,8 +58,20 @@ window.addEventListener("keypress", function() {
         messCount++;
       }
     });
-
-}
+    //This part is very redundant of the above eventListener, but waiting for the user to press enter instead of clicking
+    if (event.which === 13) {
+      if (buttonOn === true) {
+        //fade button out
+        butt.style.background = "rgba(1,1,1,0)";
+        //remove button, set buttonOn to false
+        butt.setAttribute("class", "not-visible");
+        buttonOn = false;
+        display.textContent = "";
+        i = 0;
+        messCount++;
+      }
+    }
+  }
 });
 
 
